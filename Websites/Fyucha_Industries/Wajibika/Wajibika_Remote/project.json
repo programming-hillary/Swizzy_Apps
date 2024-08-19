@@ -1,0 +1,113 @@
+{
+  "name": "Wajibika_Web",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "Websites/Fyucha_Industries/Wajibika/Wajibika_Remote/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/Websites/Fyucha_Industries/Wajibika/Wajibika_Remote",
+        "index": "Websites/Fyucha_Industries/Wajibika/Wajibika_Remote/src/index.html",
+        "main": "Websites/Fyucha_Industries/Wajibika/Wajibika_Remote/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "Websites/Fyucha_Industries/Wajibika/Wajibika_Remote/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "Websites/Fyucha_Industries/Wajibika/Wajibika_Remote/public"
+          }
+        ],
+        "styles": [
+          "Websites/Fyucha_Industries/Wajibika/Wajibika_Remote/src/styles.scss"
+        ],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "Websites/Fyucha_Industries/Wajibika/Wajibika_Remote/webpack.config.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "Websites/Fyucha_Industries/Wajibika/Wajibika_Remote/webpack.prod.config.ts"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nx/angular:dev-server",
+      "options": {
+        "port": 4280,
+        "publicHost": "http://localhost:4280"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "Wajibika_Web:build:production"
+        },
+        "development": {
+          "buildTarget": "Wajibika_Web:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "Wajibika_Web:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "Websites/Fyucha_Industries/Wajibika/Wajibika_Remote/jest.config.ts"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "Wajibika_Web:build",
+        "port": 4280,
+        "watch": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "Wajibika_Web:build:development"
+        },
+        "production": {
+          "buildTarget": "Wajibika_Web:build:production"
+        }
+      }
+    }
+  }
+}

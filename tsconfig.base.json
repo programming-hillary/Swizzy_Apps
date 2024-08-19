@@ -15,8 +15,17 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "Elimika_Web/Routes": [
+        "Websites/Fyucha_Industries/Elimika/Elimika_Remote/src/app/remote-entry/entry.routes.ts"
+      ],
       "HosDocs_Web/Routes": [
         "Websites/Personal_Projects/HosDocs/HosDocs_Remote/src/app/remote-entry/entry.routes.ts"
+      ],
+      "Jumuika_Web/Routes": [
+        "Websites/Fyucha_Industries/Jumuika/Jumuika_Remote/src/app/remote-entry/entry.routes.ts"
+      ],
+      "Wajibika_Web/Routes": [
+        "Websites/Fyucha_Industries/Wajibika/Wajibika_Remote/src/app/remote-entry/entry.routes.ts"
       ],
       "iSec_Web/Routes": [
         "Websites/Personal_Projects/iSec/iSec_Remote/src/app/remote-entry/entry.routes.ts"

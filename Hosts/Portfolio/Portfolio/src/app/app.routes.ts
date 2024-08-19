@@ -3,6 +3,21 @@ import { Route } from '@angular/router';
 
 export const appRoutes: Route[] = [
   {
+    path: 'Jumuika_Web',
+    loadChildren: () =>
+      import('Jumuika_Web/Routes').then((m) => m.remoteRoutes),
+  },
+  {
+    path: 'Wajibika_Web',
+    loadChildren: () =>
+      import('Wajibika_Web/Routes').then((m) => m.remoteRoutes),
+  },
+  {
+    path: 'Elimika_Web',
+    loadChildren: () =>
+      import('Elimika_Web/Routes').then((m) => m.remoteRoutes),
+  },
+  {
     path: 'HosDocs_Web',
     loadChildren: () =>
       import('HosDocs_Web/Routes').then((m) => m.remoteRoutes),

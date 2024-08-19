@@ -14,7 +14,13 @@ const config: ModuleFederationConfig = {
    * declare module 'my-external-remote';
    *
    */
-  remotes: ['iSec_Web', 'HosDocs_Web'],
+  remotes: [
+    'iSec_Web',
+    'HosDocs_Web',
+    'Elimika_Web',
+    'Wajibika_Web',
+    'Jumuika_Web',
+  ],
 };
 
 export default config;
