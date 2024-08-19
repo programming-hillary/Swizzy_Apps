@@ -1,0 +1,113 @@
+{
+  "name": "iSec_Web",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "Websites/Personal_Projects/iSec/iSec_Remote/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/Websites/Personal_Projects/iSec/iSec_Remote",
+        "index": "Websites/Personal_Projects/iSec/iSec_Remote/src/index.html",
+        "main": "Websites/Personal_Projects/iSec/iSec_Remote/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "Websites/Personal_Projects/iSec/iSec_Remote/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "Websites/Personal_Projects/iSec/iSec_Remote/public"
+          }
+        ],
+        "styles": [
+          "Websites/Personal_Projects/iSec/iSec_Remote/src/styles.scss"
+        ],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "Websites/Personal_Projects/iSec/iSec_Remote/webpack.config.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "Websites/Personal_Projects/iSec/iSec_Remote/webpack.prod.config.ts"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nx/angular:dev-server",
+      "options": {
+        "port": 4220,
+        "publicHost": "http://localhost:4220"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "iSec_Web:build:production"
+        },
+        "development": {
+          "buildTarget": "iSec_Web:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "iSec_Web:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "Websites/Personal_Projects/iSec/iSec_Remote/jest.config.ts"
+      }
+    },
+    "serve-static": {
+      "executor": "@nx/web:file-server",
+      "defaultConfiguration": "production",
+      "options": {
+        "buildTarget": "iSec_Web:build",
+        "port": 4220,
+        "watch": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "iSec_Web:build:development"
+        },
+        "production": {
+          "buildTarget": "iSec_Web:build:production"
+        }
+      }
+    }
+  }
+}
