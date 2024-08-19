@@ -1,0 +1,86 @@
+{
+  "name": "Swizzy_WebApps",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/Swizzy_WebApps/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/Swizzy_WebApps",
+        "index": "apps/Swizzy_WebApps/src/index.html",
+        "browser": "apps/Swizzy_WebApps/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/Swizzy_WebApps/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/Swizzy_WebApps/public"
+          }
+        ],
+        "styles": ["apps/Swizzy_WebApps/src/styles.scss"],
+        "scripts": [],
+        "server": "apps/Swizzy_WebApps/src/main.server.ts",
+        "prerender": true,
+        "ssr": {
+          "entry": "apps/Swizzy_WebApps/server.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "Swizzy_WebApps:build:production"
+        },
+        "development": {
+          "buildTarget": "Swizzy_WebApps:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "Swizzy_WebApps:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/Swizzy_WebApps/jest.config.ts"
+      }
+    }
+  }
+}

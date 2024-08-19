@@ -1,0 +1,9 @@
+{
+  "name": "Swizzy_WebApps-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/Swizzy_WebApps-e2e/src",
+  "implicitDependencies": ["Swizzy_WebApps"],
+  "// targets": "to see all targets run: nx show project Swizzy_WebApps-e2e --web",
+  "targets": {}
+}
